@@ -1,4 +1,4 @@
-import CatImage from './cat_image';
+import AnimalImage from './animal_image';
 import cat1 from '../assets/images/cat1.jpg';
 import cat2 from '../assets/images/cat2.jpg';
 import cat3 from '../assets/images/cat3.jpg';
@@ -12,21 +12,22 @@ import cat10 from '../assets/images/cat10.jpg';
 import cat11 from '../assets/images/cat11.jpg';
 import cat12 from '../assets/images/cat12.jpg';
 
-type Cat = {
+type Animal = {
   name: string;
   species: string;
   favFoods: Array<string>;
   birthYear: number;
 };
-interface CatCardProps {
-  catObject: Cat;
-  catIndex: number;
+interface CardProps {
+  animal: Animal;
+  index: number;
+  type: string;
 }
 
 const images = [
   {
     image: cat1,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY-SA 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     attributionName: 'amblin',
@@ -34,7 +35,7 @@ const images = [
   },
   {
     image: cat2,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY-SA 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     attributionName: 'ivva',
@@ -42,7 +43,7 @@ const images = [
   },
   {
     image: cat3,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY-ND 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by-nd/2.0/',
     attributionName: 'Rachele Pettarelli Ph',
@@ -50,7 +51,7 @@ const images = [
   },
   {
     image: cat4,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by/2.0/',
     attributionName: 'renarl',
@@ -58,7 +59,7 @@ const images = [
   },
   {
     image: cat5,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY-SA 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     attributionName: 'x-oph',
@@ -66,7 +67,7 @@ const images = [
   },
   {
     image: cat6,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY-ND 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by-nd/2.0/',
     attributionName: 'arrathoonlaa@att.net',
@@ -74,7 +75,7 @@ const images = [
   },
   {
     image: cat7,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by/2.0/',
     attributionName: 'pavlovskyy',
@@ -82,7 +83,7 @@ const images = [
   },
   {
     image: cat8,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by/2.0/',
     attributionName: 'AleGranholm',
@@ -90,7 +91,7 @@ const images = [
   },
   {
     image: cat9,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by/2.0/',
     attributionName: 'Sardonic G',
@@ -98,7 +99,7 @@ const images = [
   },
   {
     image: cat10,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by/2.0/',
     attributionName: 'www.metaphoricalplatypus.com',
@@ -106,7 +107,7 @@ const images = [
   },
   {
     image: cat11,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY-SA 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     attributionName: 'abraham.williams',
@@ -114,33 +115,35 @@ const images = [
   },
   {
     image: cat12,
-    altText: 'Describe this cat!',
+    altText: 'A very nice animal',
     licenceType: 'CC BY-SA 2.0',
     licenceUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
     attributionName: 'x-oph',
     attributionUrl: 'https://www.flickr.com/people/x-oph/',
   },
 ];
-const CatCard: React.FC<CatCardProps> = (props) => {
-  const { name, species, favFoods, birthYear } = props.catObject;
-  const { catIndex } = props;
+
+const Card: React.FC<CardProps> = (props) => {
+  const { name, species, favFoods, birthYear } = props.animal;
+  const { index, type } = props;
+
   return (
     <div className='card'>
       <h3 className='card__text card__header'>{name}</h3>
       <p className='card__text'>Species: {species}</p>
       <p className='card__text'>Favourite Food(s): {favFoods}</p>
       <p className='card__text'>Birth Year: {birthYear}</p>
-      {catIndex < images.length && (
-        <CatImage
-          image={images[catIndex].image}
+      {type === 'cat' && index < images.length && (
+        <AnimalImage
+          image={images[index].image}
           altText={'A fluffy cat'}
-          licenceType={images[catIndex].licenceType}
-          licenceUrl={images[catIndex].licenceUrl}
-          attributionName={images[catIndex].attributionName}
-          attributionUrl={images[catIndex].attributionUrl}
+          licenceType={images[index].licenceType}
+          licenceUrl={images[index].licenceUrl}
+          attributionName={images[index].attributionName}
+          attributionUrl={images[index].attributionUrl}
         />
       )}
     </div>
   );
 };
-export default CatCard;
+export default Card;
