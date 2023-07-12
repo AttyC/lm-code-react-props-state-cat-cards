@@ -84,10 +84,12 @@ function App(): JSX.Element {
 
   const [cats, setCats] = useState<Array<Cat>>(catData);
 
+	const numberOfCats = cats.length;
+
   return (
     <>
       <Navbar />
-      <Header />
+      <Header numberOfCats={numberOfCats} />
 
       <main>
         <div className='cards__wrapper'>
