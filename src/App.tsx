@@ -4,6 +4,7 @@ import Navbar from './components/navbar';
 import Header from './components/header';
 import Footer from './components/footer';
 import Cat from './data/cat';
+import CatCard from './components/cat_card';
 
 function App(): JSX.Element {
   const catData = [
@@ -89,7 +90,11 @@ function App(): JSX.Element {
       <Header />
 
       <main>
-        <div className='cards__wrapper'>{/* JSX code can go here */}</div>
+        <div className='cards__wrapper'>
+          {cats.map((cat) => (
+            <CatCard />
+          ))}
+        </div>
       </main>
 
       <Footer />
