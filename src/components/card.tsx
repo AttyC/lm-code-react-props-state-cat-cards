@@ -21,6 +21,7 @@ type Animal = {
 interface CardProps {
   animal: Animal;
   index: number;
+  key?: string;
   type: string;
 }
 
@@ -125,10 +126,10 @@ const images = [
 
 const Card: React.FC<CardProps> = (props) => {
   const { name, species, favFoods, birthYear } = props.animal;
-  const { index, type } = props;
+  const { index, type, key } = props;
   const foods = favFoods.join(', ');
   return (
-    <div className='card'>
+    <li className='card' key={key}>
       <h3 className='card__text card__header'>{name}</h3>
       <p className='card__text'>Species: {species}</p>
       <p className='card__text'>Favourite Food(s): {foods}</p>
@@ -143,7 +144,7 @@ const Card: React.FC<CardProps> = (props) => {
           attributionUrl={images[index].attributionUrl}
         />
       )}
-    </div>
+    </li>
   );
 };
 export default Card;
