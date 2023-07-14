@@ -38,33 +38,34 @@ function App(): JSX.Element {
     <>
       <Navbar />
       <Header numberOfCats={numberOfCats} numberOfDogs={numberOfDogs} />
-      <form action='/'>
-        <label htmlFor='animalName'>Animal name:</label>
-        <input
-          type='text'
-          id='animalName'
-          name='animalName'
-          value={animalName}
-          onChange={(e) => setAnimalName(e.target.value)}
-        />
-
-        <label htmlFor='species'>Species:</label>
-        <input
-          type='text'
-          id='species'
-          name='species'
-          value={species}
-          onChange={(e) => setSpecies(e.target.value)}
-        />
-        <input
-          type='number'
-          id='birthYear'
-          name='birthYear'
-          value={birthYear}
-          onChange={(e) => setBirthYear(parseInt(e.target.value))}
-        />
-        <label>
-          Animal Type:
+      <section>
+        <h2>Add your animal!</h2>
+        <form action='/'>
+          <label htmlFor='animalName'>Animal name:</label>
+          <input
+            type='text'
+            id='animalName'
+            name='animalName'
+            value={animalName}
+            onChange={(e) => setAnimalName(e.target.value)}
+          />
+          <label htmlFor='species'>Species:</label>
+          <input
+            type='text'
+            id='species'
+            name='species'
+            value={species}
+            onChange={(e) => setSpecies(e.target.value)}
+          />
+          <label htmlFor='birthYear'>Birth Year:</label>
+          <input
+            type='number'
+            id='birthYear'
+            name='birthYear'
+            value={birthYear}
+            onChange={(e) => setBirthYear(parseInt(e.target.value))}
+          />
+          <label htmlFor='animalType'>Animal Type:</label>
           <select
             name='animalType'
             id='animalType'
@@ -74,10 +75,9 @@ function App(): JSX.Element {
             <option value='cat'>Cat</option>
             <option value='dog'>Dog</option>
           </select>
-        </label>
-
-        <input type='submit' value='Submit' onClick={handleClick} />
-      </form>
+          <input type='submit' value='Submit' onClick={handleClick} />
+        </form>
+      </section>
       <main>
         <h2 className='header__title'>Cats!</h2>
         <ul className='cards__wrapper'>

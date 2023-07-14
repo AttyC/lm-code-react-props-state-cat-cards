@@ -20,6 +20,7 @@ body {
 	background-color: var(--light);
 	display: flex;
 	justify-content: center;
+	font-family: 'SleepyCat';
 	margin: 0;
 }
 
@@ -142,7 +143,20 @@ body {
 	}
 }
 
-
 ul {
 	list-style-type: none;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+}
+input, label, select {
+	padding: 0.5rem;
+	font-family: 'SleepyCat';
+	font-size: 1.5rem;
+}
+input[type='submit'] {
+	margin: 1rem 0;
 }
